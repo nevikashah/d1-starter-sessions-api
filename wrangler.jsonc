@@ -1,0 +1,34 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "d1-starter-sessions-api-d1",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-03-17",
+	// Remove once workerd is fully rolled out that this is default for all.
+	"compatibility_flags": ["enable_d1_with_sessions_api"],
+	"observability": {
+		"enabled": true,
+		"logs": {
+			"invocation_logs": false
+		}
+	},
+	"assets": {
+		"directory": "./public/"
+	},
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+	"d1_databases": [
+		{
+			"binding": "DB01",
+			"database_name": "d1-starter-sessions-api-d1",
+			"database_id": "40c14789-b238-4be9-b6ef-048cbbc775e1"
+		}
+	]
+}
